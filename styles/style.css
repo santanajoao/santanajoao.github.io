@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+header {
+  background-color: #242038;
+  padding: 0 20px;
+  text-align: center;
+}
+
+#initials {
+  border-bottom: 1px groove #ffffff2d;
+  color: #CAC4CE;
+  font: italic bold 24px monospace;
+  font-family: monospace;
+  padding: 8px;
+}
+
+#header-links {
+  background-color: #725ac10a;
+  padding: 12px;
+}
+
+#header-links a {
+  border-radius: 4px;
+  color: #F7ECE1;
+  font-weight: bold;
+  padding: 10px 22px;
+  text-decoration: none;
+}
+
+#header-links a:hover {
+  background-color: #59479486;
+}
