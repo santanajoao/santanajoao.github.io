@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 50px;
   padding-bottom: 5px;
 }
 
@@ -17,6 +17,19 @@ header {
   padding: 0 14px;
   position: fixed;
   width: 100%;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  text-align: center;
 }
 
 #initials {
@@ -32,24 +45,22 @@ header {
 }
 
 #header-links a {
-  border-radius: 4px;
+  border-radius: 2px;
   color: white;
   font-size: 16px;
   font-weight: bold;
   margin: 0 4px;
-  padding: 10px;
-  text-decoration: none;
+  padding: 13px;
 }
 
 #header-links a:hover {
-  background-color: #413838;
+  background-color: #b87e4b54;
 }
 
 #whoami {
-  line-height: 22px;
   background-color: #e9e8e8;
+  line-height: 22px;
   padding: 140px 8px 90px 8px;
-  text-align: center;
 }
 
 img {
@@ -69,13 +80,7 @@ img {
 }
 
 #skills {
-  text-align: center;
-  padding: 70px 0;
-}
-
-#skills ul {
-  list-style: none;
-  padding: 0;
+  padding: 120px 0;
 }
 
 #skills li {
@@ -84,8 +89,8 @@ img {
 }
 
 #soft , #hard{
-  width: 45%;
   margin-left:  5px;
+  width: 45%;
 
 }
 
@@ -99,4 +104,40 @@ img {
 
 .inline-block {
   display: inline-block;
+}
+
+#contact {
+  background-color: #413838;
+  padding: 90px 90px 180px 90px;
+}
+
+#contact li {
+  background-color: #cd863fa4;
+  border-radius: 3px;
+  display: inline-block;
+  font-weight: bold;
+  margin: 20px 45px;
+  padding: 15px;
+  width: 200px;
+}
+
+#contact li:hover {
+  text-decoration: underline;
+  background-color: #cd863fcb;
+}
+
+#contact a {
+  color: black;
+}
+
+#linkedin::before {
+  content: url("https://icons.iconarchive.com/icons/danleech/simple/16/linkedin-icon.png");
+}
+
+#gmail::before {
+  content: url("https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/16/Gmail-icon.png");
+}
+
+#github::before {
+  content: url("https://icons.iconarchive.com/icons/papirus-team/papirus-apps/16/github-icon.png");
 }
