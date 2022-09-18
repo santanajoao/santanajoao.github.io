@@ -14,6 +14,7 @@ h2 {
 }
 
 header {
+  text-align: center;
   background-color: black;
   padding: 0 14px;
   position: fixed;
@@ -33,12 +34,17 @@ section {
   text-align: center;
 }
 
+img {
+  width: 300px;
+}
+
 #initials {
   border-right: 1px solid white;
+  border-left: 1px solid white;
   color: white;
   font: normal bold 20px normal;
   font-family: serif;
-  padding: 0 30px 0 15px;
+  padding: 0 30px 0 30px;
 }
 
 #header-links {
@@ -62,10 +68,6 @@ section {
   background-color: #e9e8e8;
   line-height: 22px;
   padding: 140px 8px 90px 8px;
-}
-
-img {
-  width: 300px;
 }
 
 #whoami-text {
@@ -105,10 +107,6 @@ img {
   content: " 🧠";
 }
 
-.inline-block {
-  display: inline-block;
-}
-
 #contact {
   background-color: #413838;
   padding: 90px 90px 120px 90px;
@@ -143,4 +141,8 @@ img {
 
 #github::before {
   content: url("https://icons.iconarchive.com/icons/papirus-team/papirus-apps/16/github-icon.png");
+}
+
+.inline-block {
+  display: inline-block;
 }
