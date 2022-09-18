@@ -4,65 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifólio</title>
+    <title>João Pedro Santana | Portifólio</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h3>Índice</h3>
-    <ul>
-        <li>
-            <a href="#eu">Quem sou eu?</a>
-        </li>
-        <li>
-            <a href="#habilidades">Habilidades</a>
-        </li>
-        <li>
-            <a href="#minhas-redes">Minhas Redes</a>
-        </li>
-        <li>
-            <a href="#blogs">Páginas que eu sigo</a>
-        </li>
-    </ul>
+    <header>
+        <div id="initials" class="inline-block">JPSC</div>
+        <div id="header-links" class="inline-block">
+            <a href="#whoami">Sobre mim</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#contact">Contato</a>
+        </div>
+    </header>
+    <main>
+        <section id="whoami">
+            <div id="my-image" class="inline-block">
+                <img src="images/minha-foto-rosto.png" alt="">
+            </div>
+            <div id="whoami-text" class="inline-block">
+                <h1>Sobre mim</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores porro deserunt laborum consequuntur consequatur, vitae nemo sint dolor quod ipsa libero tempora, sed sequi praesentium odit modi beatae illum dolores fugit! Placeat quis accusantium neque reiciendis amet itaque, nobis laudantium in, voluptate magnam aut exercitationem ducimus cum porro, temporibus maxime!</p>
+            </div>
+        </section>
 
-    <h1 id="eu">Quem sou eu?</h1>
-    <img id="imagem-eu" src="images/eu-fundo-branco-menor.png" alt="Minha foto de rosto com fundo branco." width="200px">
-    <p>Meu nome é <strong>João Pedro Santana Costa</strong>, sou estudante de Desenvolvimento Web na <a href="https://www.betrybe.com/" target="_blank">Trybe</a>. Nascido e crescido em <em>Macaúbas</em> no interior da Bahia. Sou <em>apaixonado por Tecnologia, Música e Artes Marciais</em>. Gosto de <strong>ajudar</strong> e <strong>compartilhar</strong> conhecimento sempre que posso.</p>
-    <hr>
-    
-    <h2 id="habilidades">Habilidades</h2>
-    <ul>
-        <li><strong>Prestatividade</strong></li>
-        <li><em>Python</em></li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-    </ul>
+        <section id="skills">
+            <h1>Minhas Habilidades</h1>
+            <section id="hard" class="inline-block">
+                <h2 id="hard-title">Hardskills</h2>
+                <ul>
+                    <li>Python</li>
+                    <li>CSS</li>
+                    <li>HTML</li>
+                    <li>JavaScript</li>
+                </ul>
+            </section>
 
-    <br>
+            <section id="soft" class="inline-block">
+                <h2 id="soft-title">Softskills</h2>
+                <ul>
+                    <li>Prazer em aprender e ensinar</li>
+                    <li>Empatia</li>
+                    <li>Prestatividade</li>
+                    <li>Determinação</li>
+                </ul>
+            </section>
+        </section>
 
-    <h2 id="minhas-redes">Minhas redes</h2>
-    <ul>
-        <li>
-            <a href="https://www.linkedin.com/in/joaopedrosantanac" target="_blank">Linkedin</a>
-        </li>
-        <li>
-            <a href="https://github.com/santanajoao" target="_blank">GitHub</a>
-        </li>
-        <li>
-            <a href="#" target="_blank">Instagram</a>
-        </li>
-    </ul>
-
-    <br>
-
-    <h2 id="blogs">Páginas que sigo</h2>
-    <ul>
-        <li>
-            <a href="https://www.codigofonte.com.br/" target="_blank">Código Fonte</a>
-        </li>
-        <li>
-            <a href="https://blog.programacaodinamica.com.br/" target="_blank">Programação Dinâmica</a>
-        </li>
-    </ul>
-    <br>
+        <section id="contact">
+            <h1>Contato</h1>
+            <ul>
+                <li>Linkedin</li>
+                <li>Email</li>
+                <li>GitHub</li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
