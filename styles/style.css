@@ -92,7 +92,9 @@ img {
 #soft , #hard{
   margin-left:  5px;
   width: 45%;
-
+  background-color: rgba(211, 211, 211, 0.212);
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.281);
 }
 
 #hard-title::after {
@@ -109,15 +111,15 @@ img {
 
 #contact {
   background-color: #413838;
-  padding: 90px 90px 180px 90px;
+  padding: 90px 90px 120px 90px;
 }
 
 #contact li {
   background-color: #cd863fa4;
   border-radius: 3px;
-  display: inline-block;
+  display: block;
   font-weight: bold;
-  margin: 20px 45px;
+  margin: 30px auto;
   padding: 15px;
   width: 200px;
 }
