@@ -5,6 +5,11 @@ body {
 
 h1 {
   font-size: 40px;
+  padding-bottom: 5px;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 header {
@@ -17,14 +22,12 @@ header {
 #initials {
   border-right: 1px solid white;
   color: white;
-  display: inline-block;
   font: normal bold 20px normal;
   font-family: serif;
   padding: 0 30px 0 15px;
 }
 
 #header-links {
-  display: inline-block;
   padding: 14px;
 }
 
@@ -39,25 +42,21 @@ header {
 }
 
 #header-links a:hover {
-  background-color: #352e2e;
+  background-color: #413838;
 }
 
 #whoami {
+  line-height: 22px;
   background-color: #e9e8e8;
-  padding: 130px 8px 80px 8px;
+  padding: 140px 8px 90px 8px;
   text-align: center;
 }
 
-#my-image{
-  display: inline-block;
-}
-
-#my-image img {
+img {
   width: 300px;
 }
 
 #whoami-text {
-  display: inline-block;
   padding: 20px;
   text-indent: 24px;
   vertical-align: bottom;
@@ -71,6 +70,7 @@ header {
 
 #skills {
   text-align: center;
+  padding: 70px 0;
 }
 
 #skills ul {
@@ -78,16 +78,25 @@ header {
   padding: 0;
 }
 
-#skills h2 {
-  font-size: 30px;
+#skills li {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-#soft {
-  width: 49%;
-  display: inline-block;
+#soft , #hard{
+  width: 45%;
+  margin-left:  5px;
+
 }
 
-#hard {
-  width: 49%;
+#hard-title::after {
+  content: " 💻";
+}
+
+#soft-title::after {
+  content: " 🧠";
+}
+
+.inline-block {
   display: inline-block;
 }
