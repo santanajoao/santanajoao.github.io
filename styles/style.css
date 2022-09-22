@@ -3,6 +3,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+  padding: 46px 0;
+}
+
 #top-header {
   background-color: black;
   text-align: center;
@@ -28,7 +32,7 @@ body {
 
 ul {
   padding: 0;
-  margin: 12px;
+  margin: 14px;
 }
 
 #top-header li {
@@ -45,4 +49,25 @@ ul {
 
 #top-header a:hover {
   background-color: #a068385e;
+}
+
+#about-me {
+  text-align: center;
+  padding: 80px 70px ;
+  background-color: #e9e8e8;
+}
+
+#about-me img {
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+#about-me p {
+  font-size: 18px;
+}
+
+.big-title {
+  font-size: 50px;
 }
