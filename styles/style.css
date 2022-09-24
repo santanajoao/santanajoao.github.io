@@ -31,6 +31,7 @@ main {
 }
 
 ul {
+  list-style: none;
   padding: 0;
   margin: 14px;
 }
@@ -58,7 +59,6 @@ ul {
 }
 
 #about-me img {
-  display: inline-block;
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -68,6 +68,24 @@ ul {
   font-size: 18px;
 }
 
+#skills {
+  text-align: center;
+  padding: 80px 10px;
+}
+
+.skill-square {
+  padding: 5px 15;
+  font-size: 1.2em;
+  display: inline-block;
+  background-color: #e9e8e888;
+  border-right: 1px solid rgba(128, 128, 128, 0.3);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 5px;
+  margin: 10px 5px;
+  width: 45%;
+}
+
 .big-title {
   font-size: 50px;
+  text-align: center;
 }
