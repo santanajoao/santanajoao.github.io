@@ -1,91 +1,103 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Oswald', sans-serif;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
 }
 
-main {
-  padding: 46px 0;
-}
-
-#top-header {
+nav {
   background-color: black;
-  text-align: center;
   position: fixed;
   width: 100%;
+  padding: 10px 20px;
 }
 
-#top-header h1 {
-  border-left: 1px solid white;
-  border-right: 1px solid white;
+nav li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+nav a {
   color: white;
-  display: inline-block;
-  font-family: serif;
-  font-size: 20px;
-  margin: 4px 14px;
-  padding: 0 27px;
-  vertical-align: middle;
-}
-
-#top-header nav {
-  display: inline-block;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 14px;
-}
-
-#top-header li {
-  display: inline-block;
-}
-
-#top-header a {
-  border-radius: 2px;
-  color: white;
-  font-weight: 700;
-  padding: 14px;
   text-decoration: none;
+  font-weight: 700;
+  padding: 8px 10px;
 }
 
-#top-header a:hover {
-  background-color: #a068385e;
+nav a:hover {
+  background-color: gray;
+}
+
+section {
+  padding: 0 45px;
 }
 
 #about-me {
-  text-align: center;
-  padding: 80px 70px ;
   background-color: #e9e8e8;
+  padding: 154px 0 130px 0;
+  text-align: center;
 }
 
-#about-me img {
-  width: 250px;
-  height: 250px;
+#about-me img{
   border-radius: 50%;
 }
 
-#about-me p {
-  font-size: 18px;
+img {
+  width: 250px;
+}
+
+#about-me h1{
+  text-align: center;
+}
+
+h1 {
+  font-size: 44px;
+  text-align: center;
+  margin: 20px;
+}
+
+p {
+  text-align: justify;
+  max-width: 580px;
+  min-width: 395px;
+  line-height: 26px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.abm-spacing {
+  padding: 0 20px;
 }
 
 #skills {
+  padding: 65px 0 130px 0;
   text-align: center;
-  padding: 80px 10px;
 }
 
-.skill-square {
-  padding: 5px 15;
-  font-size: 1.2em;
-  display: inline-block;
-  background-color: #e9e8e888;
-  border-right: 1px solid rgba(128, 128, 128, 0.3);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+h2 {
+  font-size: 34px;
+}
+
+#skills ul {
+ list-style: none;
+}
+
+.skills {
+  min-width: 305px;
+  padding: 8px;
   border-radius: 5px;
-  margin: 10px 5px;
-  width: 45%;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.5);
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 35%;
 }
 
-.big-title {
-  font-size: 50px;
-  text-align: center;
+#projects {
+  padding: 65px 0 130px 0;
+  background-color: #413838;
 }
