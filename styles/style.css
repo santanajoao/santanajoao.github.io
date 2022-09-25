@@ -35,7 +35,7 @@ section {
 
 #about-me {
   background-color: #e9e8e8;
-  padding: 154px 0 130px 0;
+  padding: 105px 0 130px 0;
   text-align: center;
 }
 
@@ -60,7 +60,7 @@ h1 {
 p {
   text-align: justify;
   max-width: 580px;
-  min-width: 395px;
+  min-width: 360px;
   line-height: 26px;
 }
 
