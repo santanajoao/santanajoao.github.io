@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.calculator {
+  align-items: center;
+  background-color: rgb(1, 1, 1);
+  display: flex;
+  flex-flow: column;
+  height: 580px;
+  min-height: 580px;
+  min-width: 280px;
+  width: 280px;
+}
+
+.display-container {
+  display: flex;
+  flex-flow: column;
+  height: 33.3%;
+  justify-content: space-around;
+  padding: 30px 10px 0;
+  padding-top: 30px;
+  width: 100%;
+}
+
+.display {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  height: 18px;
+}
+
+#calculus-section {
+  color: rgb(230, 230, 230);
+  text-align: right;
+}
+
+#result-section {
+  color: rgb(70, 70, 70);
+  text-align: right;
+}
+
+.utilities-container {
+  border-bottom: 2px solid rgb(23, 23, 23);
+  display: flex;
+  height: 8%;
+  justify-content: flex-end;
+  width: 90%;
+}
+
+#delete-button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  font-size: 20px;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+}
+
+#delete-button:active {
+  background-color: rgb(40, 40, 40);
+}
+
+#delete-icon {
+  margin-right: 2px;
+}
+
+.buttons-container {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  height: 58.3%;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.calc-buttons {
+  align-items: center;
+  background-color: rgb(23, 23, 23);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  justify-content: center;
+  width: 60px;
+}
+
+.calc-buttons:active {
+  background-color: rgb(68, 68, 68);
+  font-size: 14px;
+}
+
+#clean {
+  color: rgb(194, 111, 107);
+}
+
+.operations {
+  color: rgb(151, 200, 108);
+}
+
+#equal {
+  background-color: rgb(66, 126, 4);
+  font-size: 22px;
+}
+
+#equal:active {
+  background-color: rgb(103, 151, 52);
+  font-size: 16px;
+}
