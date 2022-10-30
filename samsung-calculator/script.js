@@ -112,9 +112,9 @@ const isSafeExpression = (expression) => {
   .replaceAll('-', '')
   .replaceAll('*', '')
   .replaceAll('/', '')
-  .replaceAll(',', '')
   .replaceAll('(', '')
   .replaceAll(')', '')
+  .replaceAll('.', '')
   .replace(/[0-9]/g, '');
 
   return securityTest === '';
@@ -126,10 +126,13 @@ const evaluate = () => {
     expression = expression
       .replaceAll('÷', '/')
       .replaceAll('×', '*')
-      .replaceAll('%' ,'/100*');
+      .replaceAll('%' ,'/100*')
+      .replaceAll(',', '.');
     
     if (isSafeExpression(expression)) {
-      document.querySelector('#result-section').innerText = eval(expression);
+      const resultDiv = document.querySelector('#result-section');
+      const expressionResult = String(eval(expression));
+      resultDiv.innerText = expressionResult.replaceAll('.', ',');
     }
   }
 };
