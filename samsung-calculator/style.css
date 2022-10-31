@@ -51,6 +51,7 @@
 }
 
 .utilities-container {
+  align-items: center;
   border-bottom: 2px solid rgb(23, 23, 23);
   display: flex;
   height: 8%;
@@ -124,4 +125,13 @@
 #equal:active {
   background-color: rgb(103, 151, 52);
   font-size: 16px;
+}
+
+.error-messager {
+  color: rgb(194, 111, 107);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
 }

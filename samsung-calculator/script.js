@@ -1,4 +1,5 @@
 const expressionDiv = document.querySelector('#calculus-section');
+const operations = ['+', '-', '×', '÷', '%'];
 
 const addClickListenerById = (object) => {
   const entries = Object.entries(object);
@@ -35,16 +36,18 @@ const displayNumber = (event) => {
 };
 
 const displayOperation = (event) => {
-  const expressions = ['+', '-', '×', '÷', '%'];
-
   const { innerText: expression } = expressionDiv;
   const {target: {innerText: caractere } } = event;
 
   const lastIndex = expression.length - 1;
-  const lastItemIsNotOperation = !expressions.includes(expression[lastIndex]);
+  const lastItemIsNotOperation = !operations.includes(expression[lastIndex]);
   const lastItemIsNotComma = expression[lastIndex] !== ',';
   const validLength = expression.length > 0 && expression.length <= 20;
-  if (lastItemIsNotOperation && validLength && lastItemIsNotComma) {
+  const lastItemIsNotParenthesesOpen = expression[lastIndex] !== '(';
+  const validLastItem = lastItemIsNotOperation && lastItemIsNotComma 
+    && lastItemIsNotParenthesesOpen;
+
+  if (validLastItem && validLength) {
     expressionDiv.innerText = `${expression}${caractere}`;
   }
 };
@@ -103,10 +106,11 @@ const changeSignal = () => {
   // check if the number has a negative signal
   // replace de negative signal for '' 
   // or add the negative signal
-
 };
 
 const isSafeExpression = (expression) => {
+  // A função eval executa código JavaScript podendo ser insegura
+  // Essa função testa se a expressão contem apenas os caracteres matemáticos esperados
   const securityTest = expression
   .replaceAll('+', '')
   .replaceAll('-', '')
@@ -131,9 +135,41 @@ const evaluate = () => {
     
     if (isSafeExpression(expression)) {
       const resultDiv = document.querySelector('#result-section');
-      const expressionResult = String(eval(expression));
-      resultDiv.innerText = expressionResult.replaceAll('.', ',');
+      const pError = document.querySelector('.error-messager');
+      try {
+        const expressionResult = String(eval(expression)).replaceAll('.', ',');
+        pError.innerText = '';
+        if (resultDiv.innerText === expressionResult) {
+          resultDiv.innerText = '';
+          expressionDiv.innerText = expressionResult;
+        } else {
+          resultDiv.innerText = expressionResult;
+        }
+      } catch (error) {
+        pError.innerText = 'Expressão inválida';
+      }
     }
+  }
+};
+
+const hasOpenParentheses = (expression) => {
+  let opened = 0;
+  for (const caractere of expression) {
+    if (caractere === '(') opened += 1;
+    if (caractere === ')') opened -= 1;
+  }
+  return opened !== 0;
+}
+
+const displayParentheses = () => {
+  const { innerText: expression } = expressionDiv;
+  const lastIndex = expression.length - 1;
+  const lastCaractere = expression[lastIndex];
+  const validLastCaractere = isNumber(lastCaractere) || lastCaractere === ')';
+  if ([...operations, undefined, '('].includes(lastCaractere)) {
+    expressionDiv.innerText += '(';
+  } else if (validLastCaractere && hasOpenParentheses(expression)) {
+    expressionDiv.innerText += ')';
   }
 };
 
@@ -143,8 +179,8 @@ window.onload = () => {
     'clean': clearDisplay,
     'zero': displayZero,
     'comma': displayComma,
-    'signal': changeSignal,
-    'parentheses': () => {},
+    'signal': () => {},
+    'parentheses': displayParentheses,
     'equal': evaluate,
   };
 
