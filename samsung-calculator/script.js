@@ -1,4 +1,6 @@
 const expressionDiv = document.querySelector('#calculus-section');
+const pError = document.querySelector('.error-messager');
+
 const operations = ['+', '-', '×', '÷', '%'];
 
 const addClickListenerById = (object) => {
@@ -9,35 +11,40 @@ const addClickListenerById = (object) => {
   })
 };
 
-const deleteLastLetter = () => {
-  document.querySelector('#result-section').innerText = '';
-  const { innerText: expression } = expressionDiv;
+const deleteLastCaractere = () => {
+  document.querySelector('#result-section').textContent = '';
+  const { textContent: expression } = expressionDiv;
   if (expression) {
-    expressionDiv.innerText = expression.substring(0, expression.length - 1);
+    expressionDiv.textContent = expression.substring(0, expression.length - 1);
   }
+};
+
+const clearErrorMessage = () => {
+  pError.textContent = '';
 };
 
 const clearDisplay = () => {
-  document.querySelector('#calculus-section').innerText = '';
-  document.querySelector('#result-section').innerText = '';
+  document.querySelector('#calculus-section').textContent = '';
+  document.querySelector('#result-section').textContent = '';
+  clearErrorMessage();
 };
 
 const displayNumber = (event) => {
-  let { innerText: expression } = expressionDiv;
-  const {target: {innerText: caractere } } = event;
+  let { textContent: expression } = expressionDiv;
+  const {target: {textContent: caractere } } = event;
   const lastNumber = getLastExpressionNumber(expression);
   if (lastNumber === '0') {
-    deleteLastLetter();
-    expression = expressionDiv.innerText;
+    deleteLastCaractere();
+    expression = expressionDiv.textContent;
   }
   if (expression.length <= 20) {
-    expressionDiv.innerText = `${expression}${caractere}`;
+    expressionDiv.textContent = `${expression}${caractere}`;
   }
 };
 
 const displayOperation = (event) => {
-  const { innerText: expression } = expressionDiv;
-  const {target: {innerText: caractere } } = event;
+  const { textContent: expression } = expressionDiv;
+  const {target: {textContent: caractere } } = event;
 
   const lastIndex = expression.length - 1;
   const lastItemIsNotOperation = !operations.includes(expression[lastIndex]);
@@ -48,7 +55,7 @@ const displayOperation = (event) => {
     && lastItemIsNotParenthesesOpen;
 
   if (validLastItem && validLength) {
-    expressionDiv.innerText = `${expression}${caractere}`;
+    expressionDiv.textContent = `${expression}${caractere}`;
   }
 };
 
@@ -66,51 +73,97 @@ const addNumbersListener = () => {
 
 const isNumber = (caractere) => !isNaN(caractere);
 
-const getLastExpressionNumber = (expression) => {
+const isValidNumberCaractere = (caractere) => {
+  const validCaracteres = ["(", ",", ")"];
+  return validCaracteres.includes(caractere) || isNumber(caractere);
+};
+
+const getLastExpressionNumber = () => {
+  const { textContent: expression } = expressionDiv;
   let number = '';
   for (let index = expression.length - 1; index >= 0; index -= 1) {
     const caractere = expression[index];
-    if (!isNumber(caractere) && caractere !== ',') {
-      break
+    const isNegativeSign = (caractere === '-' && expression[index - 1] === '(');
+    if (!isValidNumberCaractere(caractere) && !isNegativeSign) {
+      break;
     }
-    number = `${caractere}${number}`;
+    number = `${caractere}${number}`
   }
   return number;
 };
 
+const getFirstDigit = (number) => {
+  for (const digit of number) {
+    if (isNumber(digit)) return digit;
+  }
+};
+
 const displayZero = () => {
-  const { innerText: expression } = expressionDiv;
+  const { textContent: expression } = expressionDiv;
   const lastNumber = getLastExpressionNumber(expression);
-  if (lastNumber[0] !== '0' && expression.length <= 20) {
-    expressionDiv.innerText += '0';
+  const notStartsWithZero = getFirstDigit(lastNumber) !== '0';
+  console.log(getFirstDigit(lastNumber));
+  const hasComma = expression.includes(',');
+  if ((notStartsWithZero || hasComma) && expression.length <= 20) {
+    expressionDiv.textContent += '0';
   }
 };
 
 const displayComma = () => {
-  const { innerText: expression } = expressionDiv;
+  const { textContent: expression } = expressionDiv;
   const lastNumber=  getLastExpressionNumber(expression);
   const notEmpty = ![expression, lastNumber].includes('');
   const notPreviousComma = !lastNumber.includes(',');
   if (notEmpty && notPreviousComma && expression.length <= 20) {
-    expressionDiv.innerText += ','
+    expressionDiv.textContent += ','
   }  
 };
 
-const isValidNumberCaractere = (caractere) => {
-  const validCaracteres = [',', '(', ')'];
-  return validCaracteres.includes(caractere);
+const reverse = (numberString) => {
+  let reversedNumber = '';
+  for (let index = numberString.length - 1; index >= 0; index -= 1) {
+    reversedNumber += numberString[index];
+  }
+  return reversedNumber;
+};
+
+const removeNegativeOnNumber = (number) => {
+  const reversedNumber = reverse(number);
+  const positiveNumber = reversedNumber.replace('-(', '').replace(')', '');
+  return reverse(positiveNumber);
+};
+
+const removeNegativeOnExpression = (lastNumber) => {
+  const { textContent: expression } = expressionDiv;
+  const positiveNumber = removeNegativeOnNumber(lastNumber);
+  const reversedExpression = reverse(expression);
+  const resultExpression = reversedExpression.replace(
+    reverse(lastNumber), reverse(positiveNumber)
+  );
+  expressionDiv.textContent = reverse(resultExpression);
+}
+
+const addNegativeOnExpression = (lastNumber) => {
+  const { textContent: expression } = expressionDiv;
+  const negativeLastNumber = `(-${lastNumber})`;
+  const reversedExpression = reverse(expression);
+  const resultExpression = reversedExpression.replace(
+    reverse(lastNumber), reverse(negativeLastNumber)
+  );
+  expressionDiv.textContent = reverse(resultExpression);
 };
 
 const changeSignal = () => {
-  // get the signal or operation index
-  // check if the number has a negative signal
-  // replace de negative signal for '' 
-  // or add the negative signal
+  const lastNumber = getLastExpressionNumber();
+  if (lastNumber.includes('(-')) {
+    removeNegativeOnExpression(lastNumber);
+  } else if (lastNumber !== '' && lastNumber !== '0') {
+    addNegativeOnExpression(lastNumber);
+  }
 };
 
 const isSafeExpression = (expression) => {
-  // A função eval executa código JavaScript podendo ser insegura
-  // Essa função testa se a expressão contem apenas os caracteres matemáticos esperados
+  /* A função eval executa código JavaScript podendo ser insegura. Essa função testa se a expressão contem apenas os caracteres matemáticos esperados */
   const securityTest = expression
   .replaceAll('+', '')
   .replaceAll('-', '')
@@ -124,29 +177,38 @@ const isSafeExpression = (expression) => {
   return securityTest === '';
 };
 
+const changeOperations = (expression) => {
+  return expression
+  .replaceAll('÷', '/')
+  .replaceAll('×', '*')
+  .replaceAll('%' ,'/100*')
+  .replaceAll(',', '.');
+};
+
+const evaluateAndDisplay = (expression) => {
+  const resultDiv = document.querySelector('#result-section');
+  let expressionResult = String(eval(expression)).replaceAll('.', ',');
+  if (resultDiv.textContent === expressionResult) {
+    resultDiv.textContent = '';
+    if (expressionResult.includes('-')) {
+      expressionResult = `(${expressionResult})`
+    }
+    expressionDiv.textContent = expressionResult;
+  } else {
+    resultDiv.textContent = expressionResult;
+  }
+};
+
 const evaluate = () => {
-  let { innerText: expression } = expressionDiv;
+  let { textContent: expression } = expressionDiv;
   if (expression) {
-    expression = expression
-      .replaceAll('÷', '/')
-      .replaceAll('×', '*')
-      .replaceAll('%' ,'/100*')
-      .replaceAll(',', '.');
-    
+    expression = changeOperations(expression);
     if (isSafeExpression(expression)) {
-      const resultDiv = document.querySelector('#result-section');
-      const pError = document.querySelector('.error-messager');
       try {
-        const expressionResult = String(eval(expression)).replaceAll('.', ',');
-        pError.innerText = '';
-        if (resultDiv.innerText === expressionResult) {
-          resultDiv.innerText = '';
-          expressionDiv.innerText = expressionResult;
-        } else {
-          resultDiv.innerText = expressionResult;
-        }
+        pError.textContent = '';
+        evaluateAndDisplay(expression);
       } catch (error) {
-        pError.innerText = 'Expressão inválida';
+        pError.textContent = 'Expressão inválida';
       }
     }
   }
@@ -162,24 +224,30 @@ const hasOpenParentheses = (expression) => {
 }
 
 const displayParentheses = () => {
-  const { innerText: expression } = expressionDiv;
+  const { textContent: expression } = expressionDiv;
   const lastIndex = expression.length - 1;
   const lastCaractere = expression[lastIndex];
-  const validLastCaractere = isNumber(lastCaractere) || lastCaractere === ')';
-  if ([...operations, undefined, '('].includes(lastCaractere)) {
-    expressionDiv.innerText += '(';
-  } else if (validLastCaractere && hasOpenParentheses(expression)) {
-    expressionDiv.innerText += ')';
+
+  const closeValidLastCaractere = isNumber(lastCaractere) 
+    || lastCaractere === ')';
+
+  const openValidLastCaractere = [...operations, undefined, '(']
+    .includes(lastCaractere)
+  
+  if (openValidLastCaractere && expression.length <= 20) {
+    expressionDiv.textContent += '(';
+  } else if (closeValidLastCaractere && hasOpenParentheses(expression)) {
+    expressionDiv.textContent += ')';
   }
 };
 
 window.onload = () => {
   const idAndEventCallback = {
-    'delete-button': deleteLastLetter,
+    'delete-button': deleteLastCaractere,
     'clean': clearDisplay,
     'zero': displayZero,
     'comma': displayComma,
-    'signal': () => {},
+    'signal': changeSignal,
     'parentheses': displayParentheses,
     'equal': evaluate,
   };
