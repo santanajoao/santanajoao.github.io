@@ -40,9 +40,9 @@ const displayNumber = (event) => {
     expression = expressionDiv.textContent;
     lastExpressionNumber = lastExpressionNumber.split(0, -1);
   }
-  const lastIndex = lastExpressionNumber.length - 1;
-  const lastNumberCaractere = lastExpressionNumber[lastIndex];
-  if (expression.length <= 20 && lastNumberCaractere !== ')') {
+  const lastIndex = expression.length - 1;
+  const lastExpressionCaractere = expression[lastIndex];
+  if (expression.length <= 20 && lastExpressionCaractere !== ')') {
     expressionDiv.textContent = `${expression}${caractere}`;
     lastExpressionNumber += caractere;
   }
@@ -50,7 +50,7 @@ const displayNumber = (event) => {
 
 const displayOperation = (event) => {
   const { textContent: expression } = expressionDiv;
-  const {target: {textContent: operation } } = event;
+  const { target: {textContent: operation } } = event;
 
   const lastIndex = expression.length - 1;
   const lastItemIsNotOperation = !operations.includes(expression[lastIndex]);
@@ -172,7 +172,7 @@ const isSafeExpression = (expression) => {
   .replaceAll('.', '')
   .replace(/[0-9]/g, '');
 
-  return securityTest === '';
+  return (securityTest === '');
 };
 
 const changeOperations = (expression) => {
