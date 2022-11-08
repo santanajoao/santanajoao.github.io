@@ -137,3 +137,11 @@
   text-align: left;
   width: 100%;
 }
+
+#percent {
+  font-size: 16px;
+}
+
+#parentheses {
+  font-size: 17px;
+}
